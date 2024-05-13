@@ -56,7 +56,7 @@ const ViewDetails = () => {
                         <div><img className=" rounded-lg" src={food_image} alt="" /></div>
                         <p><span className=" font-bold">Food:</span> {food_name}</p>
                         <p><span className=" font-bold">Quantity:</span> {quantity}</p>
-                        <p><span className=" font-bold">Expired Date:</span> {expired_date}</p>
+                        <p><span className=" font-bold">Expired Date:</span> {new Date(expired_date).toLocaleDateString()}</p>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <button className="btn btn-primary btn-outline my-3" onClick={() => document.getElementById('my_modal_1').showModal()}>Request</button>
                         <dialog id="my_modal_1" className="modal ">

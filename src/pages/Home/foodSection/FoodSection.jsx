@@ -18,7 +18,7 @@ const FoodSection = ({ food }) => {
                 </div>
                 <p><span className=" font-bold">Food Quantity:</span> {quantity}</p>
                 <p><span className=" font-bold">Pickup Location:</span> {location}</p>
-                <p><span className=" font-bold">Expired DAte:</span> {expired_date}</p>
+                <p><span className=" font-bold">Expired DAte:</span> {new Date(expired_date).toLocaleDateString()}</p>
                 <p title={additional_notes}><span className=" font-bold">Additional Notes:</span> 
                  {additional_notes.slice(0,30)}</p>
             </div>

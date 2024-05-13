@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
 
 const AvailableFoods = () => {
-    const [jobs, setJobs] = useState([])
+    const [foods, setFoods] = useState([])
     const [sort, setSort] = useState('');
     const [searchText, setSearchText] = useState('')
     const [search, setSearch] = useState('')
@@ -12,7 +12,7 @@ const AvailableFoods = () => {
     useEffect(() => {
         const getData = async () => {
             const { data } = await axios(`http://localhost:5000/all-foods?sort=${sort}&search=${search}`)
-            setJobs(data)
+            setFoods(data)
         }
         getData()
     }, [sort, search])
@@ -22,7 +22,7 @@ const AvailableFoods = () => {
         setSearch(searchText)
     }
 
-    console.log(jobs);
+    console.log(foods);
     return (
         <div>
             <div className=" flex gap-5">
@@ -59,7 +59,7 @@ const AvailableFoods = () => {
 
             <div className={`md:grid ${layout ? 'grid-cols-3' : "grid-cols-2"}  gap-5 my-7`}>
                 {
-                    jobs.map(job => <FoodCard key={job._id} job={job}></FoodCard>)
+                    foods.map(job => <FoodCard key={job._id} job={job}></FoodCard>)
                 }
             </div>
         </div>
