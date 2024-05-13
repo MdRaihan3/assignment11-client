@@ -7,12 +7,15 @@ import axios from "axios";
 
 const ViewDetails = () => {
     const { user } = useContext(AuthContext)
-    const [startDate, setStartDate] = useState(new Date());
+    const [reqDate, setReqDate] = useState(new Date());
+
     const food = useLoaderData();
     const navigate = useNavigate()
     const { _id, food_name, food_image, quantity, location, expired_date, additional_notes,
         donor } = food
     console.log(food);
+
+    const [startDate, setStartDate] = useState(new Date(expired_date));
 
     const handleAddFood = async e => {
         if (donor?.donor_email === user?.email) return (Swal.fire({
@@ -28,7 +31,7 @@ const ViewDetails = () => {
         const {donor_name, donor_email, donor_image} = donor
 
         const requestData = {
-            food_name, food_image, food_id, quantity, location, expired_date,
+            food_name, food_image, food_id, quantity, location, expired_date, request_date:reqDate,
              additional_notes:notes, donation_amount, requester_email,
               food_status, donor: { donor_name, donor_image, donor_email }
         }
@@ -124,7 +127,7 @@ const ViewDetails = () => {
                                                 </div>
                                                 <div className="form-control">
                                                     <label className="label">
-                                                        <span className="label-text">Donation Amount</span>
+                                                        <span className="label-text">Donation Amount($)</span>
                                                     </label>
                                                     <input type="text" name="donation_amount"
                                                         placeholder="Donation Amount" className="input input-bordered" required />
@@ -134,6 +137,12 @@ const ViewDetails = () => {
                                                         <span className="label-text">Expired Date</span>
                                                     </label>
                                                     <DatePicker className="input input-bordered" selected={startDate} />
+                                                </div>
+                                                <div className="form-control">
+                                                    <label className="label">
+                                                        <span className="label-text">Request Date</span>
+                                                    </label>
+                                                    <DatePicker className="input input-bordered" selected={reqDate} />
                                                 </div>
                                             </div>
                                             <div className="form-control mt-6">

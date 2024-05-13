@@ -1,20 +1,50 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../provides/AuthProvider";
 import axios from "axios";
-import ManageFoodCard from "./ManageFoodCard";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const ManageMyFoods = () => {
     const { user } = useContext(AuthContext)
     const [foods, setFoods] = useState([])
 
+    const getData = async () => {
+        const { data } = await axios(`http://localhost:5000/foods/${user?.email}`)
+        setFoods(data)
+    }
+
     useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/foods/${user?.email}`)
-            setFoods(data)
-        }
         getData()
     }, [user])
- 
+
+    const handleDelete = id => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+                try{
+                    const deleteData = async () =>{
+                        const {data} = await axios.delete(`http://localhost:5000/delete/${id}`)
+                        getData()
+                    }
+                    deleteData()               
+                } catch(error) {console.log(error);}
+                
+                Swal.fire({
+                    title: "Deleted!",
+                    text: "Your file has been deleted.",
+                    icon: "success"
+                });
+            }
+        })
+    }
+
     return (
         <div>
             <div className="overflow-x-auto my-5">
@@ -30,10 +60,15 @@ const ManageMyFoods = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* row 1 */}
-                       {
-                        foods.map(food => <ManageFoodCard key={food._id} food={food}></ManageFoodCard>)
-                       }
+                        {
+                            foods.map(food => <tr key={food?._id}>
+                                <td>{food?.food_name}</td>
+                                <td>{food?.quantity}</td>
+                                <td>{new Date(food?.expired_date).toLocaleDateString()}</td>
+                                <td><Link to={`/update/${food?._id}`}><button className=" btn btn-primary btn-outline">Update</button></Link></td>
+                                <td><button onClick={() => handleDelete(food?._id)} className=" btn btn-primary btn-outline">Delete</button></td>
+                            </tr>)
+                        }
                     </tbody>
                 </table>
             </div>

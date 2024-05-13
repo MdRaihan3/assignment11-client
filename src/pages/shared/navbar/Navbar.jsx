@@ -16,7 +16,7 @@ const Navbar = () => {
         <NavLink to='/availableFoods'><li><a>Available Foods</a></li></NavLink>
         <NavLink to='/add'><li><a>Add a Food</a></li></NavLink>
         <NavLink to='/manage'><li><a>Manage My Foods</a></li></NavLink>
-        <NavLink to='/request'><li><a>My Food Request</a></li></NavLink>
+        <NavLink to={`/myRequest/${user?.email}`}><li><a>My Food Request</a></li></NavLink>
     </>
     return (
         <div>
