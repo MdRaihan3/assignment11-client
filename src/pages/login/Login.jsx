@@ -5,6 +5,7 @@ import { AuthContext } from "../../provides/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const { emailSignIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
@@ -87,6 +88,9 @@ const Login = () => {
 
     return (
         <div>
+             <Helmet>
+                <title> RFood | Login</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                     <div className="text-center">

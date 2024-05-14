@@ -4,6 +4,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provides/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const ViewDetails = () => {
     const { user } = useContext(AuthContext)
@@ -45,6 +46,9 @@ const ViewDetails = () => {
     }
         return (
             <div className=" text-lg my-8">
+                 <Helmet>
+                <title> RFood | FoodDetails</title>
+            </Helmet>
                 <h1 className=" text-3xl text-blue-400 text-center">Food Details</h1>
                 <hr />
                 <div className=" text-center my-2">

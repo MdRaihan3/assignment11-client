@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hook/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const ManageMyFoods = () => {
     const { user } = useContext(AuthContext)
@@ -49,6 +50,9 @@ const ManageMyFoods = () => {
 
     return (
         <div>
+             <Helmet>
+                <title> RFood | ManageMyFoods</title>
+            </Helmet>
             <div className="overflow-x-auto my-5">
                 <table className="table">
                     {/* head */}

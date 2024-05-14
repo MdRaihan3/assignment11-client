@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -40,6 +41,9 @@ const Update = () => {
 
     return (
         <div>
+             <Helmet>
+                <title> RFood | Update</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100 my-5">
                     <div className="text-center">

@@ -3,6 +3,7 @@ import { AuthContext } from "../../provides/AuthProvider";
 import Swal from "sweetalert2";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
     const { createUser, updateUserProfile } = useContext(AuthContext)
@@ -65,6 +66,9 @@ const Register = () => {
 
     return (
         <div>
+             <Helmet>
+                <title> RFood | Register</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100 my-6">
                     <div className="text-center">

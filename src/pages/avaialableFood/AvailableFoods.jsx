@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import FoodCard from "./FoodCard";
+import { Helmet } from "react-helmet-async";
 
 const AvailableFoods = () => {
     const [foods, setFoods] = useState([])
@@ -25,6 +26,9 @@ const AvailableFoods = () => {
     console.log(foods);
     return (
         <div>
+             <Helmet>
+                <title> RFood | AvailableFoods</title>
+            </Helmet>
             <div className=" flex gap-5">
                 <div>
                     <select className=" bg-white text-black rounded p-2" onChange={(e) => setSort(e.target.value)} name="sort" id="sort" value={sort}>

@@ -5,6 +5,7 @@ import { AuthContext } from "../../provides/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const AddFood = () => {
     const { user } = useContext(AuthContext)
@@ -39,6 +40,9 @@ const AddFood = () => {
 
     return (
         <div>
+             <Helmet>
+                <title> RFood | AddFood</title>
+            </Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100 my-5">
                     <div className="text-center">
