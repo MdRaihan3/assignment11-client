@@ -19,7 +19,7 @@ const MyFoodRequest = () => {
         <div>
             <div className="overflow-x-auto my-5">
                 <table className="table">
-                    {/* head sdfewiursnc*/}
+                    {/* head */}
                     <thead>
                         <tr>
                             <th>Donor Name</th>
