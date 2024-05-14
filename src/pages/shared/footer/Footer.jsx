@@ -9,7 +9,7 @@ const Footer = () => {
                         <p>RFood<br />for the welfare of our society</p>
                     </aside>
                     <div>
-                       <h1 className="footer-title">Contact Us:</h1> 
+                       <h1 className="footer-title">Contact Us: dsfasadjlkfjasd</h1> 
                         <hr />
                         <p><span className=" font-bold">Email:</span> rfood2312@gmail.com</p>
                         <hr />
