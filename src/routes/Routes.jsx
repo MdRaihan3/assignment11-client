@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: '/viewDetails/:id',
         element: <PrivateRoutes><ViewDetails></ViewDetails></PrivateRoutes>,
-        loader: ({ params }) => fetch(`http://localhost:5000/food/${params.id}`)
+        loader: ({ params }) => fetch(`${import.meta.env.VITE_API_URL}/food/${params.id}`)
       },
       {
         path: '/manage',
@@ -50,7 +50,7 @@ const router = createBrowserRouter([
       {
         path: '/update/:id',
         element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/food/${params?.id}`)
+        loader: ({params}) => fetch(`${import.meta.env.VITE_API_URL}/food/${params?.id}`)
       },
       {
         path: '/myRequest',

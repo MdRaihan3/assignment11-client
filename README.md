@@ -1,8 +1,13 @@
-# React + Vite
+# Rfood
+-----------
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- [Client Live Site Link](https://rfood-948b8.web.app/)
+--------------------------
 
-Currently, two official plugins are available:
+***features and characteristics of this website***
+- smooth user performances
+- responsive for all device
+- fast performance
+- private routes give extra security
+- server site also secured because of jwt 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

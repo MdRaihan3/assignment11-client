@@ -9,7 +9,7 @@ const Home = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axios('http://localhost:5000/all')
+            const { data } = await axios('https://rf-ood-server.vercel.app/all')
             setFoods(data)
         }
         getData()

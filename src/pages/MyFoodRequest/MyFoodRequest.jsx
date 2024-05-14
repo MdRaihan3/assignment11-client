@@ -4,6 +4,7 @@ import useAxiosSecure from "../../hook/useAxiosSecure";
 import { AuthContext } from "../../provides/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { Helmet } from "react-helmet-async";
+import RequestedFoodCard from "./RequestedFoodCard";
 
 const MyFoodRequest = () => {
 
@@ -34,30 +35,10 @@ const MyFoodRequest = () => {
             <Helmet>
                 <title> RFood | MyFoodRequest</title>
             </Helmet>
-            <div className="overflow-x-auto my-5">
-                <table className="table">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>Donor Name</th>
-                            <th>Pickup Location</th>
-                            <th>Expired Date</th>
-                            <th>Request Date</th>
-                            <th>My donation Amount</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+            <div className="md:grid grid-cols-3 gap-5">               
                         {
-                            foods.map(food => <tr key={food?._id}>
-                                <td>{food?.food_name}</td>
-                                <td>{food?.location}</td>
-                                <td>{new Date(food?.expired_date).toLocaleDateString()}</td>
-                                <td>{new Date(food?.request_date).toLocaleDateString()}</td>
-                                <td>{food?.donation_amount}$</td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
+                            foods.map(food => <RequestedFoodCard key={food._id} food={food}></RequestedFoodCard>)
+                        } 
             </div>
         </div>
     );

@@ -36,7 +36,7 @@ const ViewDetails = () => {
              additional_notes:notes, donation_amount, requester_email,
               food_status, donor: { donor_name, donor_image, donor_email }
         }
-        try{const {data} = await axios.post('http://localhost:5000/requestAdd', requestData)
+        try{const {data} = await axios.post('https://rf-ood-server.vercel.app/requestAdd', requestData)
         console.log(data)
         navigate('/')
         Swal.fire({icon: 'success', text: 'Successfully requested'})
@@ -75,7 +75,7 @@ const ViewDetails = () => {
                                             <h1 className="text-5xl font-bold">Add Food</h1>
                                         </div>
                                         <form method="dialog" onSubmit={handleAddFood} className="card-body">
-                                            <div className=" grid grid-cols-2 gap-4">
+                                            <div className=" md:grid grid-cols-2 gap-4">
                                                 <div className="form-control">
                                                     <label className="label">
                                                         <span className="label-text">Food Name</span>

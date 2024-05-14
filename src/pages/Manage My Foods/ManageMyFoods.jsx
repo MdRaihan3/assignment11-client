@@ -33,7 +33,7 @@ const ManageMyFoods = () => {
             if (result.isConfirmed) {
                 try{
                     const deleteData = async () =>{
-                        await axios.delete(`http://localhost:5000/delete/${id}`)
+                        await axios.delete(`https://rf-ood-server.vercel.app/delete/${id}`)
                         getData()
                     }
                     deleteData()               

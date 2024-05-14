@@ -1,27 +1,40 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import {   useState } from "react";
 import FoodCard from "./FoodCard";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
 
 const AvailableFoods = () => {
-    const [foods, setFoods] = useState([])
+    // const [foods, setFoods] = useState([])
     const [sort, setSort] = useState('');
     const [searchText, setSearchText] = useState('')
     const [search, setSearch] = useState('')
     const [layout, setLayout] = useState(true)
 
-    useEffect(() => {
-        const getData = async () => {
-            const { data } = await axios(`http://localhost:5000/all-foods?sort=${sort}&search=${search}`)
-            setFoods(data)
-        }
-        getData()
-    }, [sort, search])
+    const {data: foods = [], isLoading} = useQuery({
+        queryFn: ()=> getData(),
+        queryKey: ['foods']
+    })
+
+    const getData = async () => {
+        const { data } = await axios(`${import.meta.env.VITE_API_URL}/all-foods?sort=${sort}&search=${search}`) 
+        // setFoods(data)
+        return data
+    }
+
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const { data } = await axios(`${import.meta.env.VITE_API_URL}/all-foods?sort=${sort}&search=${search}`) 
+    //         setFoods(data)
+    //     }
+    //     getData()
+    // }, [sort, search])
 
     const handleSearch = e => {
         e.preventDefault()
         setSearch(searchText)
     }
+    if(isLoading){return <span className="loading loading-spinner text-secondary"></span>}
 
     console.log(foods);
     return (
@@ -29,7 +42,7 @@ const AvailableFoods = () => {
              <Helmet>
                 <title> RFood | AvailableFoods</title>
             </Helmet>
-            <div className=" flex gap-5">
+            <div className=" md:flex gap-5">
                 <div>
                     <select className=" bg-white text-black rounded p-2" onChange={(e) => setSort(e.target.value)} name="sort" id="sort" value={sort}>
                         <option value="">sort By Expired Date</option>
@@ -63,7 +76,7 @@ const AvailableFoods = () => {
 
             <div className={`md:grid ${layout ? 'grid-cols-3' : "grid-cols-2"}  gap-5 my-7`}>
                 {
-                    foods.map(job => <FoodCard key={job._id} job={job}></FoodCard>)
+                    foods.map(food => <FoodCard key={food._id} food={food}></FoodCard>)
                 }
             </div>
         </div>

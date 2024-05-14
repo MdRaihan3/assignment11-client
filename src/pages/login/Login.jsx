@@ -24,7 +24,7 @@ const Login = () => {
             const loggedInUser = result.user;
             console.log(loggedInUser);
             const userEmail = {email}
-            axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+            axios.post('https://rf-ood-server.vercel.app/jwt', userEmail, {withCredentials: true})
             .then(res =>{
                 if(res.data.success){
                     navigate(location?.state ? location?.state : '/')
@@ -50,7 +50,7 @@ const Login = () => {
                 // console.log(loggedInUserEmail);
                 // const userEmail = {loggedInUserEmail}
                 console.log(result);
-                axios.post('http://localhost:5000/jwt', {withCredentials: true})
+                axios.post('https://rf-ood-server.vercel.app/jwt', {withCredentials: true})
                 .then(res =>{
                     if(res.data.success){
                         navigate(location?.state ? location?.state : '/')
@@ -73,7 +73,7 @@ const Login = () => {
             // const loggedInUserEmail = result?.user?.email;
             // console.log(loggedInUserEmail);
             // const userEmail = {loggedInUserEmail}
-            axios.post('http://localhost:5000/jwt', {withCredentials: true})
+            axios.post('https://rf-ood-server.vercel.app/jwt', {withCredentials: true})
             .then(res =>{
                 if(res.data.success){
                     navigate(location?.state ? location?.state : '/')

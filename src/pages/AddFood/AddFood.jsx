@@ -31,7 +31,7 @@ const AddFood = () => {
         }
         console.log(foodData);
         try {
-            const { data } = await axios.post('http://localhost:5000/addFood', foodData)
+            const { data } = await axios.post('https://rf-ood-server.vercel.app/addFood', foodData)
             console.log(data);
             navigate('/')
             Swal.fire('success')
@@ -49,7 +49,7 @@ const AddFood = () => {
                         <h1 className="text-5xl font-bold">Add Food</h1>
                     </div>
                     <form onSubmit={handleAddFood} className="card-body">
-                        <div className=" grid grid-cols-2 gap-4">
+                        <div className=" md:grid grid-cols-2 gap-4">
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Food Name</span>
