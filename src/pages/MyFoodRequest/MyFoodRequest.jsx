@@ -1,18 +1,19 @@
 
-import { useContext, useEffect, useState } from "react";
+import { useContext} from "react";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import { AuthContext } from "../../provides/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+import {  useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
 
-const {data: foods = [], isLoading, refresh, isError, error } = useQuery({
-    queryFn: ()=>getData(),
-    queryKey: ['foods']
-}) 
-    
+    const { data: foods = [], isLoading, refresh, isError, error } = useQuery({
+        queryFn: () => getData(),
+        queryKey: ['foods']
+    })
+
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
+    
     // const [foods, setFoods] = useState([])
 
     // useEffect(() => {     
@@ -25,7 +26,7 @@ const {data: foods = [], isLoading, refresh, isError, error } = useQuery({
         return data
     }
 
-    if(isLoading){return <span className="loading loading-spinner text-secondary"></span>}
+    if (isLoading) { return <span className="loading loading-spinner text-secondary"></span> }
 
     return (
         <div>

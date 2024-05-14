@@ -1,3 +1,4 @@
+import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
@@ -10,6 +11,12 @@ const Update = () => {
     const { _id, food_name, food_image, quantity, location, expired_date, additional_notes } = food
     const [startDate, setStartDate] = useState(new Date(expired_date))
 
+
+   const {mutateAsync} = useMutation({
+        mutationFn: async ({_id, foodData})=>{
+            const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/update/${_id}`, foodData)
+        }
+    })
 
     const handleUpdate = async e => {
         e.preventDefault()
@@ -24,7 +31,8 @@ const Update = () => {
         const foodData = { food_name, food_image, quantity, location, expired_date, additional_notes }
 
         try {
-            const { data } = await axios.patch(`http://localhost:5000/update/${_id}`, foodData)
+            // const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/update/${_id}`, foodData)
+            mutateAsync({_id, foodData})
             navigate('/manage')
             Swal.fire({ icon: 'Success', text: 'Updated successfully' })
         } catch (err) { console.log(err) }
