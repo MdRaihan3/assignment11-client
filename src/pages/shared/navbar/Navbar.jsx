@@ -33,7 +33,7 @@ const Navbar = () => {
                     <div className=" gap-0 inline-flex">
                         <span className=""><img className=" w-10 " src='logo.png' alt="" /></span>
                         <a className="btn btn-ghost text-xl gap-0 px-1">
-                            <span className=" text-orange-400">R</span>Food
+                            <span className=" text-orange-400">R</span>Fooddsfsafs
                         </a>
                     </div>
 
