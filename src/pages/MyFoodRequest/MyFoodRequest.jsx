@@ -2,19 +2,31 @@
 import { useContext, useEffect, useState } from "react";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import { AuthContext } from "../../provides/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
 const MyFoodRequest = () => {
-    const [foods, setFoods] = useState([])
+
+const {data: foods = [], isLoading, refresh, isError, error } = useQuery({
+    queryFn: ()=>getData(),
+    queryKey: ['foods']
+}) 
+    
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
+    // const [foods, setFoods] = useState([])
 
-    useEffect(() => {
-        const getData = async () => {
-            const { data } = await axiosSecure.get(`/requestedFood/${user?.email}`)
-            setFoods(data)
-        }
-        getData()
-    }, [])
+    // useEffect(() => {     
+    //     getData()
+    // }, [])
+
+    const getData = async () => {
+        const { data } = await axiosSecure.get(`/requestedFood/${user?.email}`)
+        // setFoods(data)
+        return data
+    }
+
+    if(isLoading){return <span className="loading loading-spinner text-secondary"></span>}
+
     return (
         <div>
             <div className="overflow-x-auto my-5">

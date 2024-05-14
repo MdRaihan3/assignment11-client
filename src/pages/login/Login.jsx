@@ -45,10 +45,10 @@ const Login = () => {
         const googleProvider = new GoogleAuthProvider()
         googleSignIn(googleProvider)
             .then(result => {
-                const loggedInUserEmail = result?.user?.email;
-                console.log(loggedInUserEmail);
-                const userEmail = {loggedInUserEmail}
-                axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+                // const loggedInUserEmail = result?.user?.email;
+                // console.log(loggedInUserEmail);
+                // const userEmail = {loggedInUserEmail}
+                axios.post('http://localhost:5000/jwt', {withCredentials: true})
                 .then(res =>{
                     if(res.data.success){
                         navigate(location?.state ? location?.state : '/')
@@ -67,10 +67,10 @@ const Login = () => {
         const gitHubProvider = new GithubAuthProvider()
         gitHubSignIn(gitHubProvider)
         .then(result => {
-            const loggedInUserEmail = result?.user?.email;
-            console.log(loggedInUserEmail);
-            const userEmail = {loggedInUserEmail}
-            axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+            // const loggedInUserEmail = result?.user?.email;
+            // console.log(loggedInUserEmail);
+            // const userEmail = {loggedInUserEmail}
+            axios.post('http://localhost:5000/jwt', {withCredentials: true})
             .then(res =>{
                 if(res.data.success){
                     navigate(location?.state ? location?.state : '/')
