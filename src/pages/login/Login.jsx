@@ -35,7 +35,7 @@ const Login = () => {
         })
         .catch(error =>{
             Swal.fire({icon: 'error',
-                text: 'check your email and password again safsdjfls;ajfslajf'
+                text: 'check your email and password again'
             })
             console.error(error)
         })

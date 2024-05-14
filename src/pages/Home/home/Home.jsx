@@ -20,7 +20,7 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <div className=" my-10">
-                <h1 className=" my-3 font-bold text-3xl text-center">Featured Foods</h1>
+                <h1 className=" my-3 font-bold text-3xl text-center">Featured Foods dsakdjhf</h1>
                 <div className=" md:grid grid-cols-3 gap-5">
                     {
                         foods.slice(0, 6).map(food => <FoodSection key={food?._id} food={food}></FoodSection>)
