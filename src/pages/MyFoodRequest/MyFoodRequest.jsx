@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet-async";
 
 const MyFoodRequest = () => {
 
-    const { data: foods = [], isLoading, refresh, isError, error } = useQuery({
+    const { data: foods = [], isLoading} = useQuery({
         queryFn: () => getData(),
         queryKey: ['foods']
     })

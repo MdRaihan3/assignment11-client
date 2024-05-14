@@ -33,7 +33,7 @@ const ManageMyFoods = () => {
             if (result.isConfirmed) {
                 try{
                     const deleteData = async () =>{
-                        const {data} = await axios.delete(`http://localhost:5000/delete/${id}`)
+                        await axios.delete(`http://localhost:5000/delete/${id}`)
                         getData()
                     }
                     deleteData()               

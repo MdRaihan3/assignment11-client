@@ -16,6 +16,7 @@ const Update = () => {
    const {mutateAsync} = useMutation({
         mutationFn: async ({_id, foodData})=>{
             const { data } = await axios.patch(`${import.meta.env.VITE_API_URL}/update/${_id}`, foodData)
+            console.log(data);
         }
     })
 

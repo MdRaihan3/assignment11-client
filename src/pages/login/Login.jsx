@@ -49,12 +49,13 @@ const Login = () => {
                 // const loggedInUserEmail = result?.user?.email;
                 // console.log(loggedInUserEmail);
                 // const userEmail = {loggedInUserEmail}
+                console.log(result);
                 axios.post('http://localhost:5000/jwt', {withCredentials: true})
                 .then(res =>{
                     if(res.data.success){
                         navigate(location?.state ? location?.state : '/')
                         Swal.fire({icon: 'success',
-                            text:'Successfully logged in dsfkljasdjf'
+                            text:'Successfully logged in'
                         })
                     }
                 })
@@ -68,6 +69,7 @@ const Login = () => {
         const gitHubProvider = new GithubAuthProvider()
         gitHubSignIn(gitHubProvider)
         .then(result => {
+            console.log(result.user);
             // const loggedInUserEmail = result?.user?.email;
             // console.log(loggedInUserEmail);
             // const userEmail = {loggedInUserEmail}
