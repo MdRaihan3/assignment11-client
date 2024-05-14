@@ -4,10 +4,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { AuthContext } from "../../provides/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddFood = () => {
     const { user } = useContext(AuthContext)
-    const [startDate, setStartDate] = useState(new Date())
+    const [startDate, setStartDate] = useState(new Date());
+    const navigate = useNavigate()
 
     const handleAddFood = async e => {
         e.preventDefault()
@@ -30,6 +32,7 @@ const AddFood = () => {
         try {
             const { data } = await axios.post('http://localhost:5000/addFood', foodData)
             console.log(data);
+            navigate('/')
             Swal.fire('success')
         } catch (err) { console.log(err) }
     }
@@ -98,7 +101,7 @@ const AddFood = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Donor Eamil</span>
+                                    <span className="label-text">Donor Email</span>
                                 </label>
                                 <input type="text" name="donor_email"
                                     value={user?.email} className="input input-bordered" required />
@@ -107,7 +110,7 @@ const AddFood = () => {
                                 <label className="label">
                                     <span className="label-text">Food Status</span>
                                 </label>
-                                <input value={'avialable'} name="food_status"
+                                <input value={'available'} name="food_status"
                                     placeholder="Food Status" className="input input-bordered" required />
                             </div>
                         </div>

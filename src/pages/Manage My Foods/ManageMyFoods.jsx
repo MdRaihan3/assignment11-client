@@ -3,13 +3,15 @@ import { AuthContext } from "../../provides/AuthProvider";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hook/useAxiosSecure";
 
 const ManageMyFoods = () => {
     const { user } = useContext(AuthContext)
     const [foods, setFoods] = useState([])
+    const axiosSecure = useAxiosSecure()
 
     const getData = async () => {
-        const { data } = await axios(`http://localhost:5000/foods/${user?.email}`)
+        const { data } = await axiosSecure.get(`/foods/${user?.email}`)
         setFoods(data)
     }
 

@@ -28,7 +28,7 @@ const AvailableFoods = () => {
             <div className=" flex gap-5">
                 <div>
                     <select className=" bg-white text-black rounded p-2" onChange={(e) => setSort(e.target.value)} name="sort" id="sort" value={sort}>
-                        <option value="">sort By DeadLine</option>
+                        <option value="">sort By Expired Date</option>
                         <option value="asc">Ascending Order</option>
                         <option value="dsc">Descending Order</option>
                     </select>

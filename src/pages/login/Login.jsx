@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provides/AuthProvider";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const Login = () => {
     const { emailSignIn, googleSignIn, gitHubSignIn } = useContext(AuthContext);
@@ -19,11 +20,18 @@ const Login = () => {
         console.log(user);
         emailSignIn(email, password)
         .then(result =>{
-            navigate(location?.state ? location?.state : '/')
-            Swal.fire({icon: 'success',
-                text:'Successfully logged in'
+            const loggedInUser = result.user;
+            console.log(loggedInUser);
+            const userEmail = {email}
+            axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+            .then(res =>{
+                if(res.data.success){
+                    navigate(location?.state ? location?.state : '/')
+                    Swal.fire({icon: 'success',
+                        text:'Successfully logged in'
+                    })
+                }
             })
-            console.log(result.user);
         })
         .catch(error =>{
             Swal.fire({icon: 'error',
@@ -37,12 +45,18 @@ const Login = () => {
         const googleProvider = new GoogleAuthProvider()
         googleSignIn(googleProvider)
             .then(result => {
-                navigate(location?.state ? location?.state : '/')
-                Swal.fire({icon: 'success',
-                    text:'successfully logged in with google'
+                const loggedInUserEmail = result?.user?.email;
+                console.log(loggedInUserEmail);
+                const userEmail = {loggedInUserEmail}
+                axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+                .then(res =>{
+                    if(res.data.success){
+                        navigate(location?.state ? location?.state : '/')
+                        Swal.fire({icon: 'success',
+                            text:'Successfully logged in'
+                        })
+                    }
                 })
-                console.log(result.user);
-                navigate('/')
             })
             .catch(error => {
                 console.error(error);
@@ -53,12 +67,18 @@ const Login = () => {
         const gitHubProvider = new GithubAuthProvider()
         gitHubSignIn(gitHubProvider)
         .then(result => {
-            navigate(location?.state ? location?.state : '/')
-            Swal.fire({icon: 'success',
-                text: 'successfully logged in with github'
+            const loggedInUserEmail = result?.user?.email;
+            console.log(loggedInUserEmail);
+            const userEmail = {loggedInUserEmail}
+            axios.post('http://localhost:5000/jwt', userEmail, {withCredentials: true})
+            .then(res =>{
+                if(res.data.success){
+                    navigate(location?.state ? location?.state : '/')
+                    Swal.fire({icon: 'success',
+                        text:'Successfully logged in'
+                    })
+                }
             })
-            console.log(result.user);
-            navigate('/')
         })
         .catch(error => {
             console.error(error);

@@ -1,7 +1,20 @@
-import { useLoaderData } from "react-router-dom";
+
+import { useContext, useEffect, useState } from "react";
+import useAxiosSecure from "../../hook/useAxiosSecure";
+import { AuthContext } from "../../provides/AuthProvider";
 
 const MyFoodRequest = () => {
-    const foods = useLoaderData()
+    const [foods, setFoods] = useState([])
+    const { user } = useContext(AuthContext)
+    const axiosSecure = useAxiosSecure()
+
+    useEffect(() => {
+        const getData = async () => {
+            const { data } = await axiosSecure.get(`/requestedFood/${user?.email}`)
+            setFoods(data)
+        }
+        getData()
+    }, [])
     return (
         <div>
             <div className="overflow-x-auto my-5">
