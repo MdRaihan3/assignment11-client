@@ -1,8 +1,9 @@
 
-import { useContext} from "react";
+import { useContext } from "react";
 import useAxiosSecure from "../../hook/useAxiosSecure";
 import { AuthContext } from "../../provides/AuthProvider";
-import {  useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const MyFoodRequest = () => {
 
@@ -13,7 +14,7 @@ const MyFoodRequest = () => {
 
     const { user } = useContext(AuthContext)
     const axiosSecure = useAxiosSecure()
-    
+
     // const [foods, setFoods] = useState([])
 
     // useEffect(() => {     
@@ -30,6 +31,9 @@ const MyFoodRequest = () => {
 
     return (
         <div>
+            <Helmet>
+                <title> RFood | MyFoodRequest</title>
+            </Helmet>
             <div className="overflow-x-auto my-5">
                 <table className="table">
                     {/* head */}
