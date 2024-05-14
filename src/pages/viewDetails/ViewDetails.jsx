@@ -47,7 +47,7 @@ const ViewDetails = () => {
         return (
             <div className=" text-lg my-8">
                  <Helmet>
-                <title> RFood | FoodDetails</title>
+                <title> RFood | FoodDetailslsdjflsad;jfs</title>
             </Helmet>
                 <h1 className=" text-3xl text-blue-400 text-center">Food Details</h1>
                 <hr />
