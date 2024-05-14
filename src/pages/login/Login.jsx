@@ -54,7 +54,7 @@ const Login = () => {
                     if(res.data.success){
                         navigate(location?.state ? location?.state : '/')
                         Swal.fire({icon: 'success',
-                            text:'Successfully logged in'
+                            text:'Successfully logged in dsfkljasdjf'
                         })
                     }
                 })

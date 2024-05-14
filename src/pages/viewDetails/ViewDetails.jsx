@@ -53,7 +53,7 @@ const ViewDetails = () => {
                 <hr />
                 <div className=" text-center my-2">
                     <h1 className=" text-lg"><span className=" font-bold">Donor Name:</span> {donor?.donor_name}</h1>
-                    <h1><span className=" font-bold">Pickup Location: ksdljfljkasjf</span> {location}</h1>
+                    <h1><span className=" font-bold">Pickup Location:</span> {location}</h1>
                 </div>
                 <div className=" md:grid grid-cols-2 gap-8">
                     <div>
